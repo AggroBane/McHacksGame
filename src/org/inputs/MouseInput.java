@@ -17,8 +17,7 @@ public class MouseInput implements MouseListener
 	@Override
 	public void mouseDragged(MouseEvent e) 
 	{
-		mouseX = e.getX();
-		mouseY = e.getY();
+
 	}
 
 	@Override
@@ -36,7 +35,8 @@ public class MouseInput implements MouseListener
 	@Override
 	public void mouseMoved(MouseEvent e) 
 	{
-		
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	@Override
