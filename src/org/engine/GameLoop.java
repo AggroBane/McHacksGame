@@ -1,12 +1,12 @@
 package org.engine;
 
+import org.graphics.Renderer;
+
 public class GameLoop 
 {
-	private final static int FPS = 30;
+	private final static byte FPS = 60;
 	private final static long TARGET_TIME = 1_000_000_000 / FPS;
-	private final static int MAX_UPDATES = 5; 
-	
-	
+	private final static byte MAX_UPDATES = 5; 
 	
 	
 	public static void start()
@@ -18,10 +18,10 @@ public class GameLoop
 				boolean running = true;
 				long lastTime = System.nanoTime();
 				long currentTime;
-				int updates;
+				byte updates;
 				
-				boolean fpsCounter = true;
-				int fps = 0;
+				boolean fpsCounter = false;
+				byte fps = 0;
 				long lastFpsCheck = System.nanoTime();
 				
 				while(running)
@@ -36,8 +36,6 @@ public class GameLoop
 						updates++;
 					}
 					
-					
-					
 					if(fpsCounter && System.nanoTime() > lastFpsCheck + 1_000_000_000)
 					{
 						System.out.println(fps);
@@ -46,6 +44,7 @@ public class GameLoop
 					}
 					
 					//render poll
+					Renderer.render();
 					fps++;
 					
 					long timeTaken = System.nanoTime() - currentTime;
