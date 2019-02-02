@@ -1,5 +1,8 @@
 package org.engine;
 
+import java.awt.event.KeyEvent;
+
+import org.GameContainer;
 import org.graphics.Renderer;
 
 public class GameLoop 
@@ -42,6 +45,8 @@ public class GameLoop
 						lastFpsCheck = System.nanoTime();
 						fps = 0;
 					}
+					
+					if(GameContainer.isKeyDown(KeyEvent.VK_W)) System.out.println("W");
 					
 					//render poll
 					Renderer.render();

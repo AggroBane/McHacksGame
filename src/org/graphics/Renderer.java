@@ -2,6 +2,7 @@ package org.graphics;
 
 import org.GameContainer;
 
+
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
@@ -11,6 +12,7 @@ public class Renderer
 	private static GLProfile profile;
 	private static GLCapabilities caps;
 	private static GLWindow window;
+	
 
 	public static void init()
 	{
@@ -23,9 +25,12 @@ public class Renderer
 		window.setTitle(GameContainer.NAME);
 		window.setSize(GameContainer.WIDTH, GameContainer.HEIGHT);
 		
-		window.setVisible(true);
-		
+		//Listeners
 		window.addGLEventListener(new EventListener());
+		window.addKeyListener(GameContainer.getKeyListener());
+		window.addMouseListener(GameContainer.getMouseListener());
+		
+		window.setVisible(true);
 	}
 	
 	public static void render()
