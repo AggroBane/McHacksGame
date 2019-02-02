@@ -1,6 +1,6 @@
 package org.levels;
 import java.io.*;
-import java.nio.file.Files;
+
 
 public class Levels {
 	
@@ -43,9 +43,6 @@ public class Levels {
 			
 		}
 		
-		public static void main(String[] args) throws IOException {
-			readFile("level1");
-		}
 		
 		
 }
