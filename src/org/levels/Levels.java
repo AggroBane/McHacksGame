@@ -3,25 +3,49 @@ import java.io.*;
 import java.nio.file.Files;
 
 public class Levels {
-		static String extension = ".txt";
-		static String PATH = "src\\org\\levels\\textfiles\\level";
-		public static void createLevel(int level) throws IOException {
-			String filename = PATH + level + extension;
+	
+		static  String extension = ".txt";
+		static String PATH = "src\\org\\levels\\textfiles\\";
+		
+		public static String createLevelFile(int level) throws IOException {
+			String filename = PATH + "level" + level + extension;
 			File file = new File(filename);
-			if(file.exists()) {
-				return;
-			}else {
-				System.out.println(file.createNewFile());
-				
-			}
 			
-			Writer fileWriter = new FileWriter("filename");
-			fileWriter.write("asdasd");
-			fileWriter.close();
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+				
+			
+			return filename;
+		}
+		
+		public static void appendToFile(String filename, int x, int y, String tileType) throws IOException {
+			BufferedWriter output;
+			output = new BufferedWriter(new FileWriter(filename, true));
+			output.newLine();
+			output.append(x + "," + y + "," + tileType);
+		
+			output.close();
+		}
+		
+		public static void readFile(String filename) throws IOException {
+			File file = new File(PATH + filename + extension);
+			BufferedReader reader = null;
+			
+			if(file.exists()) {
+				System.out.println("FILE EXIST");
+				reader = new BufferedReader(new FileReader(file));
+				String line;
+				while((line = reader.readLine()) != null) {
+					System.out.println(line);
+				}
+			}
 			
 		}
 		
-		public static void main(String[]args) throws IOException {
-			createLevel(1);
+		public static void main(String[] args) throws IOException {
+			readFile("level1");
 		}
+		
+		
 }
