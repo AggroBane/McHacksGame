@@ -32,10 +32,7 @@ public class EventListener implements GLEventListener
 		//PUT NOTHING BEFORE THIS LINE
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT); //Clear the color buffer of the last display
 		
-		ImageResource img = new ImageResource("testdgdgf.png");
-		int width = img.getTexture().getWidth();
-		int height = img.getTexture().getWidth();
-		g.drawImage(img, 0, height);
+		GameContainer.getStateManager().render(g);
 	}
 
 	@Override

@@ -1,9 +1,9 @@
 package org.engine;
 
-import java.awt.event.KeyEvent;
 
 import org.GameContainer;
 import org.graphics.Renderer;
+import org.state.StateManager;
 
 public class GameLoop 
 {
@@ -11,6 +11,7 @@ public class GameLoop
 	private final static long TARGET_TIME = 1_000_000_000 / FPS;
 	private final static byte MAX_UPDATES = 5; 
 	
+	private static StateManager stateManager;
 	
 	public static void start()
 	{
@@ -18,6 +19,7 @@ public class GameLoop
 		{
 			public void run()
 			{
+				stateManager = GameContainer.getStateManager();
 				boolean running = true;
 				long lastTime = System.nanoTime();
 				long currentTime;
@@ -35,6 +37,7 @@ public class GameLoop
 					while(currentTime - lastTime >= TARGET_TIME && updates < MAX_UPDATES)
 					{
 						//updates poll
+						stateManager.update(updateDelta());
 						lastTime += TARGET_TIME;
 						updates++;
 					}
@@ -45,8 +48,6 @@ public class GameLoop
 						lastFpsCheck = System.nanoTime();
 						fps = 0;
 					}
-					
-					if(GameContainer.isKeyDown(KeyEvent.VK_W)) System.out.println("W");
 					
 					//render poll
 					Renderer.render();
@@ -70,5 +71,15 @@ public class GameLoop
 		
 		thread.setName("GameLoop");
 		thread.start();
+	}
+	
+	public static void setStateManager(StateManager _stateManager)
+	{
+		stateManager = _stateManager;
+	}
+	
+	public static float updateDelta()
+	{
+		return 1.0f / 1_000_000_000 * TARGET_TIME;
 	}
 }

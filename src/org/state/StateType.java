@@ -1,5 +1,7 @@
 package org.state;
-public enum StateType{
+
+public enum StateType
+{
 	GAME,
 	MENU;
 }

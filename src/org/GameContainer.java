@@ -4,12 +4,15 @@ import org.engine.GameLoop;
 import org.graphics.Renderer;
 import org.inputs.KeyInput;
 import org.inputs.MouseInput;
+import org.state.StateManager;
 
 public class GameContainer 
 {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	public static final String NAME = "Game";
+	
+	private static StateManager stateManager;
 	
 	private static KeyInput keyListener;
 	private static MouseInput mouseListener;
@@ -18,6 +21,10 @@ public class GameContainer
 	
 	public GameContainer()
 	{
+		stateManager = new StateManager();
+		stateManager.init();
+		
+		
 		keyListener = new KeyInput();
 		mouseListener = new MouseInput();
 	}
@@ -47,11 +54,18 @@ public class GameContainer
 	{
 		return mouseListener;
 	}
+	
+	public static StateManager getStateManager() 
+	{
+		return stateManager;
+	}
 
 	public static void main(String[] args)
 	{
-		GameContainer gc = new GameContainer();
+		new GameContainer(); //Init
+		
 		Renderer.init();
+		
 		GameLoop.start();
 	}
 }

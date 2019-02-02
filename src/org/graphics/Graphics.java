@@ -7,7 +7,7 @@ import com.jogamp.opengl.util.texture.Texture;
 
 public class Graphics 
 {
-	private float r = 0, g = 0, b = 0, a = 1;
+	private float r = 1, g = 1, b = 1, a = 1;
 	private float rotation = 0;
 	private GL2 gl;
 	
