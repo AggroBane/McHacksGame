@@ -8,7 +8,7 @@ public class StateManager
 	private MenuState menuState;
 	private GameState gameState;
 	
-	private final StateType actualState = StateType.MENU;
+	private final StateType actualState = StateType.GAME;
 	
 	public void init()
 	{	
@@ -20,10 +20,12 @@ public class StateManager
 	{
 		switch(actualState)
 		{
-		case MENU: 
-			menuState.update(delta);
-		default:
-			gameState.update(delta);
+			case MENU: 
+				menuState.update(delta);
+				break;
+			case GAME:
+				gameState.update(delta);
+				break;
 		}
 	}
 	
@@ -31,10 +33,12 @@ public class StateManager
 	{
 		switch(actualState)
 		{
-		case MENU:
-			menuState.render(g);
-		default:
-			gameState.render(g);
+			case MENU:
+				menuState.render(g);
+				break;
+			case GAME:
+				gameState.render(g);
+				break;
 		}
 	}
 }

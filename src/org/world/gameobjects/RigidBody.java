@@ -3,7 +3,7 @@ package org.world.gameobjects;
 import org.GameContainer;
 import org.graphics.Color;
 import org.resources.ImageResource;
-import org.state.MenuState;
+import org.state.GameState;
 import org.world.gameobjects.entities.EntityState;
 import org.world.gameobjects.entities.Player;
 
@@ -13,9 +13,9 @@ public class RigidBody extends SolidObject
 	public static final float SPEED = 0.2f;
 	public static final float MAX_GRAVITY_STACK = -1f;
 
-	public static final float JUMP_SPEED = 0.1f;
-	public static final float MAX_JUMP = 2f;
-	public static final int MAX_JUMP_FRAME = 120;
+	public static final float JUMP_SPEED = 0.5f;
+	public static final float MAX_JUMP = 1f;
+	public static final int MAX_JUMP_FRAME = 25;
 	
 	private int jumpFrame = 0;
 	private boolean canJump = true;
@@ -63,12 +63,12 @@ public class RigidBody extends SolidObject
 		hitbox.move(dX, 0);
 		
 		//X MOVEMENT
-		for(SolidObject so : MenuState.getSolidObjects())
+		for(SolidObject so : GameState.getSolidObjects())
 		{
 			if(!(so instanceof Player))
 			{
 				//If the hitbox intersects with another solidObject
-				if(hitbox.intersect(so.getHitbox()))
+				if(hitbox.intersect(so.getHitbox()) && x + dX > 0)
 				{
 					//Cancel the move
 					state = EntityState.IDLE;
@@ -87,7 +87,7 @@ public class RigidBody extends SolidObject
 		{
 			dY = JUMP_SPEED;
 			hitbox.move(0, dY);
-			for(SolidObject so : MenuState.getSolidObjects())
+			for(SolidObject so : GameState.getSolidObjects())
 			{
 				if(!(so instanceof Player))
 				{
@@ -115,7 +115,7 @@ public class RigidBody extends SolidObject
 			hitbox.move(0, dY);
 			
 			//Y MOVEMENT
-			for(SolidObject so : MenuState.getSolidObjects())
+			for(SolidObject so : GameState.getSolidObjects())
 			{
 				if(!(so instanceof Player))
 				{
@@ -169,11 +169,6 @@ public class RigidBody extends SolidObject
 	{
 		x += GameContainer.tileSize / 2 * dX;
 		y += GameContainer.tileSize / 2 * dY;
-	}
-	
-	private void moveAbsolute(float dY)
-	{
-		y += dY;
 	}
 	
 	

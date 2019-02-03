@@ -1,5 +1,6 @@
 package org.world.gameobjects.menu;
 
+import org.GameContainer;
 import org.graphics.Color;
 import org.resources.ImageResource;
 import org.world.gameobjects.GameObject;
@@ -24,7 +25,9 @@ public class Button extends GameObject
 	
 	public void update(float delta)
 	{
-		//Checking if it is pressed
+		float mouseY = GameContainer.getMouseListener().getMouseY();
+		
+		System.out.println("X: "+GameContainer.getMouseListener().getMouseX()+ "  Y: "+mouseY);
 	}
 
 }

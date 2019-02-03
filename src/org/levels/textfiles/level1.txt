@@ -1,0 +1,4 @@
+0,1,grass
+1,1,grass
+2,1,grass
+3,1,grass
