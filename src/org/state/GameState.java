@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.GameContainer;
 import org.graphics.Graphics;
 import org.levels.Levels;
-import org.resources.ImageResource;
 import org.world.gameobjects.GameObject;
 import org.world.gameobjects.SolidObject;
 import org.world.gameobjects.entities.Player;
@@ -22,6 +21,7 @@ public class GameState
 	public GameState()
 	{
 		player = new Player(0, 128, GameContainer.tileSize, GameContainer.tileSize);
+		
 		try 
 		{
 			objects = Levels.createObjectFromFile("level1");
@@ -47,7 +47,7 @@ public class GameState
 	}
 	
 	public void render(Graphics g)
-	{
+	{	
 		for(GameObject ob : objects)
 		{
 			ob.render(g);

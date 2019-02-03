@@ -9,35 +9,20 @@ import org.resources.Animation;
 import org.resources.ImageResource;
 import org.world.gameobjects.Hitbox;
 
-public class Player extends Entity {
+public class Player extends Entity 
+{
 	
 	private int idleLeftAnimation = 0, idleRightAnimation = 1, walkLeftAnimation = 2, walkRightAnimation = 3;
 	
 	private Animation[] animations;
 	private float spawnX, spawnY;
 	private ImageResource jumpUpRight, jumpUpLeft, jumpDownRight, jumpDownLeft;
+	float cameraDx = 0;
 	
 	public Player(float x, float y, float width, float height) 
 	{
 		super(x, y, width, height);
-		init();
-	}
-	
-	public Player(float x, float y, float width, float height, Color color) 
-	{
-		super(x, y, width, height, color);
-		init();
-	}
-	
 
-	public Player(float x, float y, float width, float height, ImageResource img) 
-	{
-		super(x, y, width, height, img);
-		init();
-	}
-	
-	public void init()
-	{
 		spawnX = 0;
 		spawnY = GameContainer.tileSize * 2;
 		
@@ -82,6 +67,7 @@ public class Player extends Entity {
 		animations[walkRightAnimation] = new Animation(walkRight, 25);
 	}
 	
+	
 	public void update(float delta)
 	{
 		super.update(delta);
@@ -118,6 +104,12 @@ public class Player extends Entity {
 	
 	private void respawn()
 	{
+		if(0 < GameContainer.WIDTH / 2 - width / 2)
+		{
+			float halfScreen = -(GameContainer.WIDTH / 2 - width / 2);
+			cameraDx = halfScreen - x - halfScreen - halfScreen;
+		}
+		
 		x = spawnX;
 		y = spawnY;
 		hitbox = new Hitbox(x, y, width, height);
@@ -125,6 +117,34 @@ public class Player extends Entity {
 	
 	public void render(Graphics g)
 	{
+		if(isJumping)
+		{
+			g.drawImage(jumpImg, x, y, width, height);
+		}
+		else if(state == EntityState.IDLE)
+		{
+			g.drawImage(animations[idleAnimation].animate(), x, y, width, height);
+		}
+
+		else if(state == EntityState.LEFT || state == EntityState.RIGHT)
+		{
+			g.drawImage(animations[walkAnimation].animate(), x, y, width, height);
+		}
+		
+		//If the player respawns
+		if(cameraDx != 0)
+		{
+			g.translate(-cameraDx, 0);
+			cameraDx = 0;
+		}
+		else if(x > GameContainer.WIDTH / 2 - width / 2)
+		{
+			g.translate(-xMove, 0);
+		}
+
+	
+
+=======
 		if(facing == FacingState.RIGHT) {
 			if(isJumping)
 			{
@@ -152,6 +172,7 @@ public class Player extends Entity {
 				g.drawImage(animations[idleLeftAnimation].animate(), x, y, width, height);
 			}	
 		
+>>>>>>> 7256ffe50678d0bcf1bf56bc5ede050e242ff60d
 	}
 
 }

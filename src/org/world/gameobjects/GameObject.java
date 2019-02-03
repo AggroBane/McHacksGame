@@ -9,7 +9,8 @@ public class GameObject
 	protected float x, y, width;
 	protected float height;
 	protected Color color;
-	private ImageResource img;
+	protected ImageResource img;
+
 	
 	public GameObject(float x, float y, float width, float height)
 	{
@@ -30,6 +31,7 @@ public class GameObject
 		this(x, y, width, height);
 		this.img = img;
 	}
+	
 	
 	public void update(float delta)
 	{
@@ -63,6 +65,5 @@ public class GameObject
 	{
 		return y;
 	}
-	
 	
 }

@@ -21,6 +21,7 @@ public class RigidBody extends SolidObject
 	protected int jumpFrame = 0;
 	protected boolean canJump = true;
 	protected boolean isJumping = false;
+	protected float xMove = 0;
 	
 	protected float gravityStack = 0;
 	
@@ -30,17 +31,6 @@ public class RigidBody extends SolidObject
 	public RigidBody(float x, float y, float width, float height) 
 	{
 		super(x, y, width, height);
-	}
-	
-	public RigidBody(float x, float y, float width, float height, Color color) 
-	{
-		super(x, y, width, height, color);
-
-	}
-	
-	public RigidBody(float x, float y, float width, float height, ImageResource img) 
-	{
-		super(x, y, width, height, img);
 	}
 	
 
@@ -68,20 +58,19 @@ public class RigidBody extends SolidObject
 			if(!(so instanceof Player))
 			{
 				//If the hitbox intersects with another solidObject
-				if(hitbox.intersect(so.getHitbox()) && x + dX > 0)
+				if(hitbox.intersect(so.getHitbox()) || x + dX < 0)
 				{
 					//Cancel the move
 					state = EntityState.IDLE;
 					//Replace the hitbox at its initial place
 					hitbox.move(-dX, 0);
 					dX = 0;
-					if(isJumping) resetJump();
 				}
 			}
 		}
 		
 		move(dX, 0);
-
+		xMove = GameContainer.tileSize / 2 * dX;
 		
 		if(isJumping)
 		{
@@ -93,6 +82,8 @@ public class RigidBody extends SolidObject
 				{
 					if(hitbox.intersect(so.hitbox))
 					{
+						isJumping = false;
+						canJump = false;
 						hitbox.move(0, -dY);
 						dY = 0;
 					}
@@ -100,6 +91,7 @@ public class RigidBody extends SolidObject
 			}
 			
 			move(0, dY);
+
 		}
 		else
 		{
