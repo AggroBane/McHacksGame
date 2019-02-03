@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import org.GameContainer;
 import org.graphics.Graphics;
 import org.levels.Levels;
-import org.resources.ImageResource;
-import org.world.camera.Camera;
 import org.world.gameobjects.GameObject;
 import org.world.gameobjects.SolidObject;
 import org.world.gameobjects.entities.Player;
@@ -19,12 +17,9 @@ public class GameState
 	private ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	private static ArrayList<SolidObject> solidObjects = new ArrayList<SolidObject>();
 	private Player player;
-	public static Camera camera;
 	
 	public GameState()
 	{
-		camera = new Camera();
-		
 		player = new Player(0, 128, GameContainer.tileSize, GameContainer.tileSize);
 		
 		try 
@@ -52,9 +47,7 @@ public class GameState
 	}
 	
 	public void render(Graphics g)
-	{
-		camera.render(g);
-		
+	{	
 		for(GameObject ob : objects)
 		{
 			ob.render(g);

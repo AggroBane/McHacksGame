@@ -5,6 +5,7 @@ import org.graphics.Color;
 import org.resources.ImageResource;
 import org.state.GameState;
 import org.world.gameobjects.entities.EntityState;
+import org.world.gameobjects.entities.FacingState;
 import org.world.gameobjects.entities.Player;
 
 public class RigidBody extends SolidObject
@@ -25,6 +26,7 @@ public class RigidBody extends SolidObject
 	protected float gravityStack = 0;
 	
 	protected EntityState state = EntityState.IDLE;
+	protected FacingState facing = FacingState.RIGHT;
 	
 	public RigidBody(float x, float y, float width, float height) 
 	{
@@ -148,7 +150,9 @@ public class RigidBody extends SolidObject
 		jumpFrame = 0;
 	}
 	
-
+	public void changeSight(FacingState facing) {
+		this.facing = facing;
+	}
 
 	public void changeState(EntityState state)
 	{
