@@ -27,6 +27,6 @@ public class Tile
 	
 	public static final int TREE_HEIGHT = 128;
 	public static final int TREE_WIDTH = 64;
-	public static final int FLOWER_DIMENSION = 32; 
-
+	public static final int FLOWER_DIMENSION = 64; 
+	public static final int GRASS_DIMENSION = 64;
 }
