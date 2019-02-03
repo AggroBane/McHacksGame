@@ -13,9 +13,9 @@ public class RigidBody extends SolidObject
 	public static final float SPEED = 0.2f;
 	public static final float MAX_GRAVITY_STACK = -1f;
 
-	public static final float JUMP_SPEED = 0.1f;
+	public static final float JUMP_SPEED = 0.5f;
 	public static final float MAX_JUMP = 2f;
-	public static final int MAX_JUMP_FRAME = 120;
+	public static final int MAX_JUMP_FRAME = 30;
 	
 	private int jumpFrame = 0;
 	private boolean canJump = true;

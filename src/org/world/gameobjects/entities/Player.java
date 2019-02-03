@@ -9,9 +9,6 @@ import org.resources.ImageResource;
 
 public class Player extends Entity
 {
-	
-	private Animation playerWalk;
-
 	public Player(float x, float y, float width, float height) 
 	{
 		super(x, y, width, height);
