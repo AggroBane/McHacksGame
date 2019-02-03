@@ -4,19 +4,17 @@ import java.awt.event.KeyEvent;
 
 import org.GameContainer;
 import org.graphics.Color;
+import org.resources.Animation;
 import org.resources.ImageResource;
 
 public class Player extends Entity
 {
+	
+	private Animation playerWalk;
 
 	public Player(float x, float y, float width, float height) 
 	{
 		super(x, y, width, height);
-	}
-	
-	public Player(float x, float y, float width, float height, Color color) 
-	{
-		super(x, y, width, height, color);
 	}
 	
 	public Player(float x, float y, float width, float height, ImageResource img) 
