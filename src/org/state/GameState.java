@@ -20,7 +20,7 @@ public class GameState
 	
 	public GameState()
 	{
-		player = new Player(0, 128, GameContainer.tileSize, GameContainer.tileSize);
+		player = new Player(0, 2 * GameContainer.tileSize, GameContainer.tileSize, GameContainer.tileSize);
 		
 		try 
 		{

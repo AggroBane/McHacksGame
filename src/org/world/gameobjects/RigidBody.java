@@ -1,8 +1,6 @@
 package org.world.gameobjects;
 
 import org.GameContainer;
-import org.graphics.Color;
-import org.resources.ImageResource;
 import org.state.GameState;
 import org.world.gameobjects.entities.EntityState;
 import org.world.gameobjects.entities.FacingState;

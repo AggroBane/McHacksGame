@@ -60,6 +60,7 @@ public class Levels {
 						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, GameContainer.tileSize, GameContainer.tileSize, Tile.grass));
 					}
 
+
 				}
 			}
 			

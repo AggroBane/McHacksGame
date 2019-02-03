@@ -117,35 +117,8 @@ public class Player extends Entity
 	
 	public void render(Graphics g)
 	{
-		if(isJumping)
+		if(facing == FacingState.RIGHT) 
 		{
-			g.drawImage(jumpImg, x, y, width, height);
-		}
-		else if(state == EntityState.IDLE)
-		{
-			g.drawImage(animations[idleAnimation].animate(), x, y, width, height);
-		}
-
-		else if(state == EntityState.LEFT || state == EntityState.RIGHT)
-		{
-			g.drawImage(animations[walkAnimation].animate(), x, y, width, height);
-		}
-		
-		//If the player respawns
-		if(cameraDx != 0)
-		{
-			g.translate(-cameraDx, 0);
-			cameraDx = 0;
-		}
-		else if(x > GameContainer.WIDTH / 2 - width / 2)
-		{
-			g.translate(-xMove, 0);
-		}
-
-	
-
-=======
-		if(facing == FacingState.RIGHT) {
 			if(isJumping)
 			{
 				g.drawImage(jumpUpRight, x, y, width, height);
@@ -170,9 +143,17 @@ public class Player extends Entity
 			else //Idle
 			{
 				g.drawImage(animations[idleLeftAnimation].animate(), x, y, width, height);
-			}	
+			}
 		
->>>>>>> 7256ffe50678d0bcf1bf56bc5ede050e242ff60d
+		if(cameraDx != 0)
+		{
+			g.translate(-cameraDx, 0);
+			cameraDx = 0;
+		}
+		else if(x > GameContainer.WIDTH / 2 - width / 2)
+		{
+			g.translate(-xMove, 0);
+		}
 	}
 
 }
