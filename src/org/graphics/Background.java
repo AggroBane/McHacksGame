@@ -9,6 +9,6 @@ public class Background
 	
 	public void update()
 	{
-		effects.
+	
 	}
 }

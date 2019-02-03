@@ -12,12 +12,12 @@ public class Effect
 	{
 		this.type = type;
 		
-		switch(type)
+		/*switch(type)
 		{
 			case CLOUD:
 				ImageResource[] clouds = new ImageResource[];
 				animation = 
 				break;
-		}
+		}*/
 	}
 }
