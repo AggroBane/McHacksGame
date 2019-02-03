@@ -7,6 +7,7 @@ import org.graphics.Color;
 import org.graphics.Graphics;
 import org.resources.Animation;
 import org.resources.ImageResource;
+import org.state.GameState;
 import org.world.gameobjects.Hitbox;
 
 public class Player extends Entity 
@@ -24,7 +25,7 @@ public class Player extends Entity
 		super(x, y, width, height);
 
 		spawnX = 0;
-		spawnY = GameContainer.tileSize * 2;
+		spawnY = GameContainer.tileSize * 4;
 		
 		
 		animations = new Animation[4];
@@ -104,6 +105,7 @@ public class Player extends Entity
 	
 	private void respawn()
 	{
+		GameState.respawnPlayer();
 		if(0 < GameContainer.WIDTH / 2 - width / 2)
 		{
 			float halfScreen = -(GameContainer.WIDTH / 2 - width / 2);
@@ -113,6 +115,7 @@ public class Player extends Entity
 		x = spawnX;
 		y = spawnY;
 		hitbox = new Hitbox(x, y, width, height);
+
 	}
 	
 	public void render(Graphics g)
@@ -155,5 +158,16 @@ public class Player extends Entity
 			g.translate(-xMove, 0);
 		}
 	}
+	
+	public float getWidth()
+	{
+		return width;
+	}
+	
+	public float getXMove()
+	{
+		return xMove;
+	}
+	
 
 }
