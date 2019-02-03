@@ -90,7 +90,8 @@ public class Levels {
 
 				else if(values[2].equals("flower"))
 				{
-					switch (random.nextInt(6)) {
+					switch (random.nextInt(6)) 
+					{
 					case 0:
 						objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower0));
 						break;
@@ -112,11 +113,33 @@ public class Levels {
 					}
 
 				}
+				else if(values[2].equals("dirt"))
+				{
+					switch (random.nextInt(4)) 
+					{
+					case 0:
+						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.dirt0));
+						break;
+					case 1:
+						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.dirt1));
+						break;
+					case 2:
+						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.dirt2));
+						break;
+					case 3:
+						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.dirt3));
+						break;
+					}
+				}
+				else if(values[2].equals("bomb"))
+				{
+					objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.bomb));
+				}
 
 			}
 
 
 		}
-	return objList;
-}
+		return objList;
+	}
 }

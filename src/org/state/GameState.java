@@ -19,6 +19,7 @@ public class GameState
 	private static ArrayList<SolidObject> solidObjects = new ArrayList<SolidObject>();
 	private Player player;
 	private ImageResource background;
+	private ImageResource ship, sun;
 	private static float backgroundX = 0;
 	
 	public GameState()
@@ -26,6 +27,8 @@ public class GameState
 		player = new Player(0, 4 * GameContainer.tileSize, GameContainer.tileSize, GameContainer.tileSize);
 		
 		background = new ImageResource("world/background/blue_sky.png");
+		ship = new ImageResource("world/background/rocket.png");
+		sun = new ImageResource("world/background/sun.png");
 		
 		try 
 		{
@@ -61,6 +64,10 @@ public class GameState
 		}
 		
 		g.drawImage(background, backgroundX-GameContainer.tileSize, GameContainer.HEIGHT, GameContainer.WIDTH+GameContainer.tileSize * 2, GameContainer.HEIGHT);
+		
+		g.drawImage(ship, 0, 190, GameContainer.tileSize, 128);
+		
+		g.drawImage(sun, backgroundX+GameContainer.WIDTH-350 ,600, GameContainer.tileSize * 3, GameContainer.tileSize  * 3);
 		
 		for(GameObject ob : objects)
 		{

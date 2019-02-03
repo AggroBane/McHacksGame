@@ -24,6 +24,7 @@ public class Tile
 	public static final ImageResource flower3 = new ImageResource("world/assets/flower4.png");
 	public static final ImageResource flower4 = new ImageResource("world/assets/flower5.png");
 	public static final ImageResource flower5 = new ImageResource("world/assets/flower6.png");
+	public static final ImageResource bomb = new ImageResource("entities/bomb/bomb0.png");
 	
 	public static final int TREE_HEIGHT = 128;
 	public static final int TREE_WIDTH = 64;
