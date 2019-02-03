@@ -7,7 +7,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Game engine/natives"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="jar/jogl-all.jar">
+	<classpathentry kind="lib" path="jar/jogl-all.jar" sourcepath="jar/jogl-all.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Game engine/natives"/>
 		</attributes>
