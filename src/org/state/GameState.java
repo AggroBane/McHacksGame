@@ -21,7 +21,7 @@ public class GameState
 	
 	public GameState()
 	{
-		player = new Player(90, 90, GameContainer.tileSize, GameContainer.tileSize, new ImageResource("smile.png"));
+		player = new Player(0, 128, GameContainer.tileSize, GameContainer.tileSize);
 		try 
 		{
 			objects = Levels.createObjectFromFile("level1");

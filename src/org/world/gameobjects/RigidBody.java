@@ -17,13 +17,13 @@ public class RigidBody extends SolidObject
 	public static final float MAX_JUMP = 1f;
 	public static final int MAX_JUMP_FRAME = 25;
 	
-	private int jumpFrame = 0;
-	private boolean canJump = true;
-	private boolean isJumping = false;
+	protected int jumpFrame = 0;
+	protected boolean canJump = true;
+	protected boolean isJumping = false;
 	
-	private float gravityStack = 0;
+	protected float gravityStack = 0;
 	
-	EntityState state = EntityState.IDLE;
+	protected EntityState state = EntityState.IDLE;
 	
 	public RigidBody(float x, float y, float width, float height) 
 	{

@@ -10,7 +10,7 @@ public class GameContainer
 {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
-	public static final int tileSize = 32;
+	public static final int tileSize = 64;
 	public static final String NAME = "Game";
 	
 	private static StateManager stateManager;
