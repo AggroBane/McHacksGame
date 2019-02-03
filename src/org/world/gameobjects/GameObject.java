@@ -6,8 +6,9 @@ import org.resources.ImageResource;
 
 public class GameObject 
 {
-	private float x, y, width, height;
-	private Color color;
+	protected float x, y, width;
+	protected float height;
+	protected Color color;
 	private ImageResource img;
 	
 	public GameObject(float x, float y, float width, float height)
@@ -52,4 +53,16 @@ public class GameObject
 			g.fillRect(x, y, width, height);
 		}
 	}
+
+	public float getX() 
+	{
+		return x;
+	}
+
+	public float getY() 
+	{
+		return y;
+	}
+	
+	
 }
