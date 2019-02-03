@@ -17,7 +17,7 @@ public class GameState
 {
 	private ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	private static ArrayList<SolidObject> solidObjects = new ArrayList<SolidObject>();
-	private Player player;
+	public static Player player;
 	private ImageResource background;
 	private ImageResource ship, sun;
 	private static float backgroundX = 0;

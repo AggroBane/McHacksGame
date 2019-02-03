@@ -5,6 +5,7 @@ import org.GameContainer;
 import org.graphics.Graphics;
 import org.resources.Animation;
 import org.resources.ImageResource;
+import org.state.GameState;
 import org.world.gameobjects.tiles.Tile;
 
 public class SolidObject extends GameObject
@@ -38,7 +39,8 @@ public class SolidObject extends GameObject
 	
 	public void render(Graphics g)
 	{
-		if(animation != null)
+
+		if(animation != null && GameState.player.getX() >= this.x-5)
 		{
 			g.drawImage(animation.animate(), x, y, GameContainer.tileSize,  GameContainer.tileSize);
 		}
