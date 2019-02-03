@@ -1,6 +1,7 @@
 package org.levels;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.GameContainer;
 import org.world.gameobjects.GameObject;
@@ -13,6 +14,7 @@ public class Levels {
 	
 		static  String extension = ".txt";
 		static String PATH = "src\\org\\levels\\textfiles\\";
+		
 		
 		public static String createLevelFile(int level) throws IOException 
 		{
@@ -46,6 +48,8 @@ public class Levels {
 			
 			if(file.exists()) 
 			{
+				Random random = new Random();
+				
 				int lineCount = 0;
 				reader = new BufferedReader(new FileReader(file));
 				String line;
@@ -57,16 +61,51 @@ public class Levels {
 					//ADD EVERY BLOCK HERE
 					if(values[2].equals("grass"))
 					{
-						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, GameContainer.tileSize, GameContainer.tileSize, Tile.grass));
+						objList.add(new SolidObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, GameContainer.tileSize, GameContainer.tileSize, Tile.grass1));
 					}
-
+					else if(values[2].equals("tree"))
+					{
+						switch (random.nextInt(3)) {
+							case 0:
+								objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.TREE_WIDTH, Tile.TREE_HEIGHT, Tile.tree0));
+								break;
+							case 1:
+								objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.TREE_WIDTH, Tile.TREE_HEIGHT, Tile.tree1));
+								break;
+							case 2:
+								objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.TREE_WIDTH, Tile.TREE_HEIGHT, Tile.tree2));
+								break;
+						}}
+					
+					else if(values[2].equals("flower"))
+					{
+						switch (random.nextInt(6)) {
+						case 0:
+							objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower0));
+							break;
+						case 1:
+							objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower1));
+							break;
+						case 2:
+							objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower2));
+							break;
+						case 3:
+							objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower3));
+							break;
+						case 4:
+							objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower4));
+							break;
+						case 5:
+							objList.add(new GameObject(Integer.parseInt(values[0]) * GameContainer.tileSize, Integer.parseInt(values[1]) * GameContainer.tileSize, Tile.FLOWER_DIMENSION, Tile.FLOWER_DIMENSION, Tile.flower5));
+							break;
+						}
 
 				}
-			}
 			
+			
+		}
+				
+		}
 			return objList;
 		}
-		
-		
-		
 }
