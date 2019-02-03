@@ -24,7 +24,7 @@ public class Player extends Entity
 		super(x, y, width, height);
 
 		spawnX = 0;
-		spawnY = GameContainer.tileSize * 2;
+		spawnY = GameContainer.tileSize * 4;
 		
 		
 		animations = new Animation[4];
