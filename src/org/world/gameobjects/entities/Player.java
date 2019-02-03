@@ -11,6 +11,7 @@ import org.world.gameobjects.Hitbox;
 
 public class Player extends Entity
 {
+<<<<<<< HEAD
 	
 	private int idleAnimation = 0, walkAnimation = 1, jumpAnimation = 2;
 	
@@ -18,6 +19,8 @@ public class Player extends Entity
 	private float spawnX, spawnY;
 	private ImageResource jumpImg;
 	
+=======
+>>>>>>> 29b47450ebe9ec8a7372d956cdb519f72f61a709
 	public Player(float x, float y, float width, float height) 
 	{
 		super(x, y, width, height);

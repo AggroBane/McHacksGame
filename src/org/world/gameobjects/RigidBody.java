@@ -57,8 +57,6 @@ public class RigidBody extends SolidObject
 			dX = -SPEED;
 		}
 
-
-
 		
 		hitbox.move(dX, 0);
 		
