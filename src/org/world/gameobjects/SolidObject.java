@@ -43,6 +43,7 @@ public class SolidObject extends GameObject
 		if(animation != null && GameState.player.getX() >= this.x-5)
 		{
 			g.drawImage(animation.animate(), x, y, GameContainer.tileSize,  GameContainer.tileSize);
+			if(animation.getActualFrame() >= 4) g.drawImage(new ImageResource("world/background/win.png"), GameState.player.x - GameContainer.WIDTH / 2 - GameState.player.getWidth() / 2, GameContainer.HEIGHT, GameContainer.WIDTH, GameContainer.HEIGHT);
 		}
 		else
 		{
