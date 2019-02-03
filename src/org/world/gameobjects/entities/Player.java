@@ -11,37 +11,19 @@ import org.world.gameobjects.Hitbox;
 
 public class Player extends Entity
 {
-<<<<<<< HEAD
-	
-	private int idleAnimation = 0, walkAnimation = 1, jumpAnimation = 2;
+
+	private int idleAnimation = 0, walkAnimation = 1;
 	
 	private Animation[] animations;
 	private float spawnX, spawnY;
 	private ImageResource jumpImg;
+	float cameraDx = 0;
 	
-=======
->>>>>>> 29b47450ebe9ec8a7372d956cdb519f72f61a709
+
 	public Player(float x, float y, float width, float height) 
 	{
 		super(x, y, width, height);
-		init();
-	}
-	
-	public Player(float x, float y, float width, float height, Color color) 
-	{
-		super(x, y, width, height, color);
-		init();
-	}
-	
 
-	public Player(float x, float y, float width, float height, ImageResource img) 
-	{
-		super(x, y, width, height, img);
-		init();
-	}
-	
-	public void init()
-	{
 		spawnX = 0;
 		spawnY = GameContainer.tileSize * 2;
 		
@@ -67,6 +49,7 @@ public class Player extends Entity
 		animations[idleAnimation] = new Animation(idleFrames, 2);
 		animations[walkAnimation] = new Animation(walkFrames, 4);
 	}
+	
 	
 	public void update(float delta)
 	{
@@ -102,6 +85,12 @@ public class Player extends Entity
 	
 	private void respawn()
 	{
+		if(0 < GameContainer.WIDTH / 2 - width / 2)
+		{
+			float halfScreen = -(GameContainer.WIDTH / 2 - width / 2);
+			cameraDx = halfScreen - x - halfScreen - halfScreen;
+		}
+		
 		x = spawnX;
 		y = spawnY;
 		hitbox = new Hitbox(x, y, width, height);
@@ -122,6 +111,19 @@ public class Player extends Entity
 		{
 			g.drawImage(animations[walkAnimation].animate(), x, y, width, height);
 		}
+		
+		//If the player respawns
+		if(cameraDx != 0)
+		{
+			g.translate(-cameraDx, 0);
+			cameraDx = 0;
+		}
+		else if(x > GameContainer.WIDTH / 2 - width / 2)
+		{
+			g.translate(-xMove, 0);
+		}
+
+	
 
 	}
 
