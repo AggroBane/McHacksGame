@@ -20,6 +20,7 @@
 5,3,grass
 6,3,grass
 7,3,grass
+10,13,dirt
 7,5,tree
 8,3,grass
 9,3,grass
